@@ -1,38 +1,116 @@
 .App {
   text-align: center;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  color: #333333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo {
+  width: 40%;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.nav-item {
+  height: 3vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  width: 13%;
+}
+
+nav span {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.highlight {
+  visibility: hidden;
+  width: 100%;
+  background-color: #2f80ed;
+  border-radius: 4px 4px 0px 0px;
+  height: 10%;
+}
+
+.active {
+  visibility: visible;
+}
+
+form {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.addTaskInput {
+  border-radius: 12px;
+  border: 1px solid #bdbdbd;
+  font-size: 14px;
+  padding: 2% 1%;
+  width: 80%;
+}
+
+input::placeholder {
+  color: #828282;
+}
+
+.add-task-btn {
+  font-weight: 600;
+  font-size: 14px;
   color: white;
+  background-color: #2f80ed;
+  border: none;
+  box-shadow: 0px 2px 6px rgba(127, 177, 243, 0.4);
+  border-radius: 12px;
+  padding: 1% 2%;
+  width: 15%;
 }
 
-.App-link {
-  color: #61dafb;
+
+.task {
+text-align: start;
+font-size: 18px;
+font-weight: 500;
+display: flex;
+align-items: center;
+margin: 2% 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task input {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  margin-right: 1%;
+}
+
+.task span {
+  color: black;
+}
+
+.delete-btn {
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  background-color: #eb5757;
+  padding: 2%;
+  width: 15%;
+  margin-left: 85%;
+}
+
+.delete-btn i {
+  margin-right: 5%;
 }
