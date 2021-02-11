@@ -1,5 +1,8 @@
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 const TodoList = (props) => {
   const toggleTask = (id) => {
     props.toggleCompleted(id);
@@ -10,7 +13,6 @@ const TodoList = (props) => {
   };
 
   const deleteAllCompleted = () => {
-      console.log('hitting 1')
     props.removeAllCompleted();
   };
 
@@ -77,14 +79,17 @@ const TodoList = (props) => {
                     className="delete-btn"
                     onClick={() => deleteTask(task.id)}
                   >
-                    delete task
+                    <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </div>
               );
             }
           })}
           {props.completedTasks.length > 0 && (
-            <button className="delete-all-btn" onClick={deleteAllCompleted}>delete all</button>
+            <button className="delete-all-btn" onClick={deleteAllCompleted}>
+              <FontAwesomeIcon icon={faTrash} />
+              delete all
+            </button>
           )}
         </>
       )}
