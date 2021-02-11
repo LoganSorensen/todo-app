@@ -4,18 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TodoList = (props) => {
-  const toggleTask = (id) => {
-    props.toggleCompleted(id);
-  };
-
-  const deleteTask = (id) => {
-    props.removeTask(id);
-  };
-
-  const deleteAllCompleted = () => {
-    props.removeAllCompleted();
-  };
-
   return (
     <div>
       {props.currentTab === "All" && (
@@ -26,7 +14,7 @@ const TodoList = (props) => {
                 <input
                   type="checkbox"
                   defaultChecked={task.completed === true ? true : false}
-                  onClick={() => toggleTask(task.id)}
+                  onClick={() => props.toggleCompleted(task.id)}
                 ></input>
                 <span
                   style={
@@ -50,7 +38,7 @@ const TodoList = (props) => {
                 <div key={task.id} className="task">
                   <input
                     type="checkbox"
-                    onClick={() => toggleTask(task.id)}
+                    onClick={() => props.toggleCompleted(task.id)}
                   ></input>
                   <span>{task.name}</span>
                 </div>
@@ -69,7 +57,7 @@ const TodoList = (props) => {
                     <input
                       type="checkbox"
                       defaultChecked={true}
-                      onClick={() => toggleTask(task.id)}
+                      onClick={() => props.toggleCompleted(task.id)}
                     ></input>
                     <span style={{ textDecoration: "line-through" }}>
                       {task.name}
@@ -77,7 +65,7 @@ const TodoList = (props) => {
                   </div>
                   <button
                     className="delete-btn"
-                    onClick={() => deleteTask(task.id)}
+                    onClick={() => props.removeTask(task.id)}
                   >
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
@@ -86,7 +74,10 @@ const TodoList = (props) => {
             }
           })}
           {props.completedTasks.length > 0 && (
-            <button className="delete-all-btn" onClick={deleteAllCompleted}>
+            <button
+              className="delete-all-btn"
+              onClick={() => props.removeAllCompleted()}
+            >
               <FontAwesomeIcon icon={faTrash} />
               delete all
             </button>

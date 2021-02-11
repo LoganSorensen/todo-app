@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import TodoForm from "./components/todoForm";
 import TodoList from "./components/todoList";
+import TodoNav from "./components/todoNav";
 
 import "./App.css";
 
@@ -16,12 +17,11 @@ const App = () => {
     }
   });
 
-  const changeTab = (e) => {
-    setCurrentTab(e.target.innerHTML);
+  const changeTab = (tabName) => {
+    setCurrentTab(tabName);
   };
 
   const addTask = (taskName) => {
-    console.log(taskName);
     if (taskName !== "") {
       setTasks([
         ...tasks,
@@ -65,32 +65,7 @@ const App = () => {
     <div className="App">
       <h1>#todo</h1>
       <div className="todo">
-        <nav>
-          <div className="nav-item" onClick={changeTab}>
-            <span>All</span>
-            <div
-              className={
-                currentTab === "All" ? "highlight active" : "highlight"
-              }
-            ></div>
-          </div>
-          <div className="nav-item" onClick={changeTab}>
-            <span>Active</span>
-            <div
-              className={
-                currentTab === "Active" ? "highlight active" : "highlight"
-              }
-            ></div>
-          </div>
-          <div className="nav-item" onClick={changeTab}>
-            <span>Completed</span>
-            <div
-              className={
-                currentTab === "Completed" ? "highlight active" : "highlight"
-              }
-            ></div>
-          </div>
-        </nav>
+        <TodoNav currentTab={currentTab} changeTab={changeTab} />
         {currentTab === "All" || currentTab === "Active" ? (
           <TodoForm addTask={addTask} />
         ) : (

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-
-
 const TodoForm = (props) => {
   const [newTask, setNewTask] = useState("");
 

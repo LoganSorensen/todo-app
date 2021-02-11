@@ -78,15 +78,14 @@ input::placeholder {
   width: 15%;
 }
 
-
 .task {
-text-align: start;
-font-size: 18px;
-font-weight: 500;
-display: flex;
-align-items: center;
-/* justify-content: space-between; */
-margin: 2% 0;
+  text-align: start;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  margin: 2% 0;
 }
 
 .task input {
@@ -119,7 +118,7 @@ margin: 2% 0;
 }
 
 .delete-btn:hover {
-  background-color:#ebebeb;
+  background-color: #ebebeb;
 }
 
 .delete-all-btn {
