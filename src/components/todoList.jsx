@@ -1,17 +1,18 @@
 import React from "react";
 
 const TodoList = (props) => {
-//   console.log("props in list", props);
+  const toggleTask = (id) => {
+    props.toggleCompleted(id);
+  };
 
-  //   const toggleCompleted = (e) => {
-  // console.log(e.target.checked)
-  // e.target.checked = e.target.checked;
-  //   }
+  const deleteTask = (id) => {
+    props.removeTask(id);
+  };
 
-  const toggleTask = (id) => (e) => {
-    console.log(id, e.target)
-    props.toggleCompleted(id)
-  }
+  const deleteAllCompleted = () => {
+      console.log('hitting 1')
+    props.removeAllCompleted();
+  };
 
   return (
     <div>
@@ -22,10 +23,18 @@ const TodoList = (props) => {
               <div key={task.id} className="task">
                 <input
                   type="checkbox"
-                  // checked={task.completed === true ? true : false}
-                    onClick={toggleTask(task.id)}
+                  defaultChecked={task.completed === true ? true : false}
+                  onClick={() => toggleTask(task.id)}
                 ></input>
-                <span>{task.name}</span>
+                <span
+                  style={
+                    task.completed === true
+                      ? { textDecoration: "line-through" }
+                      : { textDecoration: "none" }
+                  }
+                >
+                  {task.name}
+                </span>
               </div>
             );
           })}
@@ -39,8 +48,7 @@ const TodoList = (props) => {
                 <div key={task.id} className="task">
                   <input
                     type="checkbox"
-                    // checked={task.completed === true ? true : false}
-                      onClick={toggleTask}
+                    onClick={() => toggleTask(task.id)}
                   ></input>
                   <span>{task.name}</span>
                 </div>
@@ -54,17 +62,30 @@ const TodoList = (props) => {
           {props.tasks.map((task) => {
             if (task.completed === true) {
               return (
-                <div key={task.id} className="task">
-                  <input
-                    type="checkbox"
-                    // checked={task.completed === true ? true : false}
-                      onClick={toggleTask}
-                  ></input>
-                  <span>{task.name}</span>
+                <div key={task.id} className="completed-task">
+                  <div className="task">
+                    <input
+                      type="checkbox"
+                      defaultChecked={true}
+                      onClick={() => toggleTask(task.id)}
+                    ></input>
+                    <span style={{ textDecoration: "line-through" }}>
+                      {task.name}
+                    </span>
+                  </div>
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteTask(task.id)}
+                  >
+                    delete task
+                  </button>
                 </div>
               );
             }
           })}
+          {props.completedTasks.length > 0 && (
+            <button className="delete-all-btn" onClick={deleteAllCompleted}>delete all</button>
+          )}
         </>
       )}
     </div>

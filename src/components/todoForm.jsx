@@ -1,17 +1,17 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const TodoForm = (props) => {
-    const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState("");
 
-    const handleChange = (e) => {
-        setNewTask(e.target.value);
-    }
+  const handleChange = (e) => {
+    setNewTask(e.target.value);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        props.addTask(newTask);
-        setNewTask("")
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.addTask(newTask);
+    setNewTask("");
+  };
 
   return (
     <form>

@@ -9,8 +9,28 @@ const App = () => {
   const [currentTab, setCurrentTab] = useState("All");
   const [tasks, setTasks] = useState([]);
 
+  const completedTasks = []
+  tasks.map(task => {
+    if (task.completed === true) {
+      completedTasks.push(task)
+    }
+  })
+
+  console.log(completedTasks)
+
   const changeTab = (e) => {
     setCurrentTab(e.target.innerHTML);
+  };
+
+  const addTask = (taskName) => {
+    setTasks([
+      ...tasks,
+      {
+        name: taskName,
+        id: Date.now(),
+        completed: false,
+      },
+    ]);
   };
 
   const toggleCompleted = (id) => {
@@ -27,16 +47,21 @@ const App = () => {
     setTasks(newTaskList);
   };
 
-  const addTask = (taskName) => {
-    setTasks([
-      ...tasks,
-      {
-        name: taskName,
-        id: Date.now(),
-        completed: false,
-      },
-    ]);
+  const removeTask = (id) => {
+    tasks.map((task) => {
+      if (task.id === id && task.completed === true) {
+        tasks.splice(tasks.indexOf(task), 1);
+      } else {
+        console.log("no id match");
+      }
+    });
   };
+
+  const removeAllCompleted = () => {
+    console.log('hitting 2')
+    const test = tasks.filter(task => !task.completed);
+    setTasks(test)
+  }
 
   console.log(tasks);
 
@@ -79,6 +104,9 @@ const App = () => {
           currentTab={currentTab}
           tasks={tasks}
           toggleCompleted={toggleCompleted}
+          removeTask={removeTask}
+          removeAllCompleted={removeAllCompleted}
+          completedTasks={completedTasks}
         />
       </div>
     </div>

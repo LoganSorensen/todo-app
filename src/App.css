@@ -85,6 +85,7 @@ font-size: 18px;
 font-weight: 500;
 display: flex;
 align-items: center;
+/* justify-content: space-between; */
 margin: 2% 0;
 }
 
@@ -99,7 +100,29 @@ margin: 2% 0;
   color: black;
 }
 
+.completed-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .delete-btn {
+  border: none;
+  background-color: transparent;
+  color: #bdbdbd;
+  font-size: 18px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 1%;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color:#ebebeb;
+}
+
+.delete-all-btn {
   color: white;
   font-size: 12px;
   font-weight: 600;
@@ -108,9 +131,19 @@ margin: 2% 0;
   background-color: #eb5757;
   padding: 2%;
   width: 15%;
+  margin-top: 5%;
   margin-left: 85%;
+  cursor: pointer;
 }
 
-.delete-btn i {
+.delete-all-btn:hover {
+  background-color: #fc7c7c;
+}
+
+.delete-all-btn:active {
+  background-color: #eb5757;
+}
+
+.delete-all-btn i {
   margin-right: 5%;
 }
